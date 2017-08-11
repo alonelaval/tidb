@@ -538,6 +538,10 @@ func (c *isIPv4CompatFunctionClass) getFunction(args []Expression, ctx context.C
 	if err != nil {
 		return nil, errors.Trace(err)
 	}
+	bf.tp.Flen = 1
+	bf.tp.Decimal = 0
+	bf.tp.Charset = charset.CollationBin
+	bf.tp.Flag |= mysql.BinaryFlag
 	sig := &builtinIsIPv4PrefixedSig{baseIntBuiltinFunc{bf}, false}
 	return sig.setSelf(sig), nil
 }
@@ -554,6 +558,10 @@ func (c *isIPv4MappedFunctionClass) getFunction(args []Expression, ctx context.C
 	if err != nil {
 		return nil, errors.Trace(err)
 	}
+	bf.tp.Flen = 1
+	bf.tp.Decimal = 0
+	bf.tp.Charset = charset.CollationBin
+	bf.tp.Flag |= mysql.BinaryFlag
 	sig := &builtinIsIPv4PrefixedSig{baseIntBuiltinFunc{bf}, true}
 	return sig.setSelf(sig), nil
 }
@@ -607,6 +615,10 @@ func (c *isIPv6FunctionClass) getFunction(args []Expression, ctx context.Context
 	if err != nil {
 		return nil, errors.Trace(err)
 	}
+	bf.tp.Flen = 1
+	bf.tp.Decimal = 0
+	bf.tp.Charset = charset.CollationBin
+	bf.tp.Flag |= mysql.BinaryFlag
 	sig := &builtinIsIPv6Sig{baseIntBuiltinFunc{bf}}
 	return sig.setSelf(sig), nil
 }
